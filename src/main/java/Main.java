@@ -26,12 +26,12 @@ public class Main {
     }
   
     public void carritoDeCompras(Scanner sc){
-            linkedList<itemCarrito> carrito = new linkedList<>();
+            LinkedList<ItemCarrito> carrito = new LinkedList<>();
             System.out.println("Escribe la cantidad de elementos que deseas agregar al carrito: ");
             int cantidadPrendas = sc.nextInt();
             sc.nextLine();
             for (int i = 0; i < cantidadPrendas; i++) {
-                itemCarrito nuevoItem = new itemCarrito(generarPrendaAleatoria(),1);
+                ItemCarrito nuevoItem = new ItemCarrito(generarPrendaAleatoria(),1);
                 carrito.pushBack(nuevoItem);
             }
             carrito.getData();
@@ -70,9 +70,9 @@ public class Main {
         System.out.println("Escribe la cantidad de datos que deseas añadir al historial: ");
         int cantidadPrendas = sc.nextInt();
         sc.nextLine();
-        stack<prenda> historialPrendas = new stack<prenda>(cantidadPrendas);
+        Stack<Prenda> historialPrendas = new Stack<Prenda>(cantidadPrendas);
         for (int i = 0; i < cantidadPrendas; i++) {
-            prenda nuevaPrenda = generarPrendaAleatoria();
+            Prenda nuevaPrenda = generarPrendaAleatoria();
             historialPrendas.push(nuevaPrenda);
         }
         System.out.println("Deseas ver el último elemento del historial? (S/N)");
@@ -165,7 +165,7 @@ public class Main {
           System.out.println("Escribe el nombre de la prenda: ");
           String nombrePrenda = sc.nextLine();
 
-          prenda prenda = generarPrendaAleatoria();
+          Prenda prenda = generarPrendaAleatoria();
           prenda.nombre = nombrePrenda;
 
           System.out.println("Escribe cuantos vas a pedir: ");
@@ -181,7 +181,7 @@ public class Main {
           q.printQueue();
       }
     }
-    public static prenda generarPrendaAleatoria() {
+    public static Prenda generarPrendaAleatoria() {
         String[] nombres = {"Pantalon", "Camiseta", "Sudadera", "Falda", "Chaqueta", "Vestido", "Blusa", "Pantaloneta", "Zapatos", "Sandalias"};
         String[] colores = {"Azul", "Rojo", "Verde", "Negro", "Blanco", "Amarillo", "Naranja", "Rosa", "Morado", "Gris"};
         char[] tallas = {'S', 'M', 'L'};
@@ -193,14 +193,14 @@ public class Main {
         int idVendedor = random.nextInt(100000);
         int precio = random.nextInt(100000) + 20000; // Precio aleatorio entre 500 y 50500
 
-        return new prenda(nombre, color, talla, idVendedor, precio);
+        return new Prenda(nombre, color, talla, idVendedor, precio);
     }
-    public static void buscarPrendasPorNombreHistorial(stack<prenda> historial, String nombre) {
-        stack<prenda> tempStack = new stack<>(historial.length);
+    public static void buscarPrendasPorNombreHistorial(Stack<Prenda> historial, String nombre) {
+        Stack<Prenda> tempStack = new Stack<>(historial.length);
         boolean encontrado = false;
 
         while (!historial.isEmpty()) {
-            prenda p = historial.pop();
+            Prenda p = historial.pop();
             if (p.nombre.equals(nombre)) {
                 System.out.println("Prenda encontrada: " + p);
                 encontrado = true;
@@ -217,17 +217,17 @@ public class Main {
             System.out.println("No se encontraron prendas con ese nombre.");
         }
     }
-    public static void limpiarHistorial(stack<prenda> historial) {
+    public static void limpiarHistorial(Stack<Prenda> historial) {
         while (!historial.isEmpty()) {
             historial.pop();
         }
     }
-    public static void eliminarPrendaHistorial(stack<prenda> historial, String nombre) {
-        stack<prenda> tempStack = new stack<>(historial.length);
+    public static void eliminarPrendaHistorial(Stack<Prenda> historial, String nombre) {
+        Stack<Prenda> tempStack = new Stack<>(historial.length);
         boolean encontrado = false;
 
         while (!historial.isEmpty()) {
-            prenda p = historial.pop();
+            Prenda p = historial.pop();
             if (!p.nombre.equals(nombre)) {
                 tempStack.push(p);
             } else {
@@ -267,7 +267,7 @@ public class Main {
       }
       System.out.println("No se encontró la orden");
     }
-    public static void addOrdenLista(Queue<Order> q, int id_usuario, prenda prenda, int cant){
+    public static void addOrdenLista(Queue<Order> q, int id_usuario, Prenda prenda, int cant){
       Order o = new Order(LocalDate.now(), id_usuario, cant, prenda);
       q.enqueue(o);
       System.out.println("Orden añadida");
@@ -311,392 +311,5 @@ public class Main {
       int cantidad = rand.nextInt(10) + 1;
       // Prenda prenda = generarPrendaAleatoria();
       return new Order(fecha, id_usuario, cantidad, generarPrendaAleatoria());
-    }
-}
-
-class prenda{
-    String nombre, color;
-    Character talla;
-    int id_vendedor, precio;
-    public prenda(String nombre, String color, Character talla, int id_vendedor, int precio){
-        this.nombre = nombre;
-        this.color = color;
-        this.talla = talla;
-        this.id_vendedor = id_vendedor;
-        this.precio = precio;
-    }
-    public String toString(){
-        return "Nombre: " + nombre + " Color: " + color + " Talla: " + talla + " Id_Vendedor: " + id_vendedor + " Precio: " + precio;
-    }
-}
-class Order{
-  private LocalDate date;
-  private int id_usuario, cantidad;
-  private prenda prenda;
-
-  public Order(LocalDate date, int id_usuario, int cantidad, prenda prenda){
-    this.date = date;
-    this.id_usuario = id_usuario;
-    this.cantidad = cantidad;
-    this.prenda = prenda;
-  }
-
-  public LocalDate getDate() {
-    return date;
-  }
-
-  public void setDate(LocalDate date) {
-    this.date = date;
-  }
-
-  public int getId_usuario() {
-    return id_usuario;
-  }
-
-  public void setId_usuario(int id_usuario) {
-    this.id_usuario = id_usuario;
-  }
-
-  public int getCantidad() {
-    return cantidad;
-  }
-
-  public void setCantidad(int cantidad) {
-    this.cantidad = cantidad;
-  }
-
-  public prenda getPrenda(){
-    return prenda;
-  }
-
-  public void setPrenda(prenda prenda){
-    this.prenda = prenda;
-  }
-
-  @Override
-  public String toString(){
-    return "Fecha: " + date + ", id_usuario: " + id_usuario + ", cantidad: " + cantidad + ", prenda: " + prenda.nombre;
-  }
-}
-class itemCarrito{
-    prenda prenda;
-    int cantidad;
-    public itemCarrito(prenda prenda, int cantidad){
-        this.cantidad=cantidad;
-        this.prenda = prenda;
-    }
-    public prenda getPrenda() {
-        return prenda;
-    }
-    public String toString() {
-        return "Prenda: " + prenda.toString() + ", Cantidad: " + cantidad;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-}
-class linkedList <T>{
-    Node head;
-    Node tail;
-
-    static class Node <T> {
-        T data;
-        Node next;
-        Node(T d){
-            data = d;
-            next = null;
-        }
-    }
-    public void pushFront(T data){
-        Node newNode = new Node(data);
-        if (head == null){
-            head = newNode;
-            tail = newNode;
-        } else {
-            head.next = newNode;
-        }
-    }
-    public void pushBack(T data){
-        Node newNode = new Node(data);
-        if (head == null){
-            head = newNode;
-            tail = newNode;
-        } else {
-            tail.next = newNode;
-            tail = newNode;
-        }
-    }
-    public void popFront(){
-        if (head == null){
-            System.out.println("La lista está vacía");
-        } else {
-            head = head.next;
-        }
-    }
-    public void popBack(){
-        Node p =  head;
-        if (head == null){ //la lista está vacía
-            System.out.println("No se puede hacer");
-        } else if (p == tail) { //la lista tiene un solo elemento
-            head = null;
-            tail = null;
-        } else { //Caso general
-            while (p.next != tail){
-                p = p.next;
-            }
-            tail = p;
-            p.next = null;
-        }
-    }
-    public void delete(int index) {
-        if (head == null) {
-            System.out.println("La lista está vacía");
-            return;
-        }
-
-        if (index == 0) {
-            head = head.next;
-            return;
-        }
-
-        Node<T> current = head;
-        Node<T> previous = null;
-        for (int i = 0; i < index; i++) {
-            if (current == null) {
-                System.out.println("El índice está fuera de rango");
-                return;
-            }
-            previous = current;
-            current = current.next;
-        }
-
-        if (current == null) {
-            System.out.println("El índice está fuera de rango");
-            return;
-        }
-
-        previous.next = current.next;
-    }
-
-    public void add(T data, int position) {
-
-        Node<T> newNode = new Node<>(data);
-        if (position == 0) { // Insertar al principio de la lista
-            newNode.next = head;
-            head = newNode;
-            if (tail == null) { // Si la lista está vacía, también actualizamos el tail
-                tail = newNode;
-            }
-        } else {
-            Node<T> current = head;
-            for (int i = 0; i < position - 1; i++) {
-                current = current.next;
-            }
-            newNode.next = current.next;
-            current.next = newNode;
-            if (newNode.next == null) { // Si el nuevo nodo se inserta al final, actualizamos el tail
-                tail = newNode;
-            }
-        }
-    }
-
-    public void getData(){
-        Node p = head;
-        if (head == null){
-            System.out.println("La lista se encuentra vacía");
-        } else {
-            System.out.print("[");
-            while (p != null){
-                if (p.next == null){
-                    System.out.println(p.data + "]");
-                } else {
-                    System.out.print(p.data + ",");
-                }
-                p = p.next;
-            }
-        }
-    }
-    public void topFront(){
-        if (head == null){
-            System.out.println("La lista se encuentra vacía");
-        } else {
-            System.out.println(head.data);
-        }
-    }
-    public T topBack(){
-        if (tail == null)
-            return null;
-        else {
-            System.out.println((T) tail.data);
-            return (T) tail.data;
-        }
-    }
-    public boolean find(T data){
-        Node p = head;
-        if (head == null)
-            return false;
-        if (p == data)
-            return true;
-        while (p.next != null){
-            if (p.data == data){
-                System.out.print("true");
-                return true;
-            }
-            System.out.print("false");
-            return false;
-        }
-        return false;
-    }
-    public boolean isEmpty(){
-        if (head==null) return true;
-        else return false;
-    }
-    public int size() {
-        int count = 0;
-        Node current = head;
-        while (current != null) {
-            count++;
-            current = current.next;
-        }
-        return count;
-    }
-    public void setCantidad(int index, int nuevaCantidad) {
-        Node current = head;
-        for (int i = 0; i < index; i++) {
-            current = current.next;
-        }
-        ((itemCarrito) current.data).setCantidad(nuevaCantidad);
-    }
-    public String getData(int index) {
-        Node<T> current = head;
-        int currentIndex = 0;
-        while (current != null) {
-            if (currentIndex == index) {
-                return current.data.toString();
-            }
-            current = current.next;
-            currentIndex++;
-        }
-        return null; // Si no se encuentra el índice
-    }
-}
-class Queue <T> {
-  private T[] elements;
-  private int size;
-  private int front;
-  private int rear;
-
-  public Queue(int maxsize) {
-    @SuppressWarnings("unchecked") T[] elements = (T[]) new Object[maxsize];
-    this.elements = elements;
-    size = 0;
-    front = 0;
-    rear = 0;
-  }
-
-  public void enqueue(T item) {
-    if (isFull()) {
-      System.out.println("La cola está llena");
-      return;
-    }
-    elements[rear] = item;
-    rear = (rear + 1) % elements.length;
-    size++;
-  }
-
-  public T dequeue() {
-    if (isEmpty()) {
-      System.out.println("La cola está vacía");
-      return null;
-    }
-    T item = elements[front];
-    front = (front + 1) % elements.length;
-    size--;
-    return item;
-  }
-
-  public T peek() {
-    if (isEmpty()) {
-      System.out.println("La cola está vacía");
-      return null;
-    }
-    return elements[front];
-  }
-
-  public T peekAt(int index){
-    if (index < 0 || index >= size) {
-      System.out.println("Indice fuera de limites");
-      return null;
-    }
-    return elements[(front + index) % elements.length];
-  }
-
-  public void printQueue(){
-    for (int i = 0; i < size; i++) {
-      System.out.println(peekAt(i));
-    }
-  }
-
-  public boolean isFull(){
-    return size == elements.length;
-  }
-
-  public boolean isEmpty() {
-    return size == 0;
-  }
-
-  public int getSize() {
-    return size;
-  }
-}
-class stack <T>{
-    private T[] pila;
-    private int top;
-    public int length;
-
-    public stack(int length){
-        this.length = length;
-        pila = (T[]) new Object[length];
-        top = 0;
-    }
-    public void push(T nuevo){
-        if (isFull())
-            throw new IllegalStateException("La pila está llena");
-        else {
-            pila[top] = nuevo;
-            top++;
-        }
-    }
-    public T pop(){
-        if (isEmpty())
-            return null;
-        else {
-            top--;
-            return pila[top];
-        }
-    }
-
-    public boolean isEmpty(){
-        return top==0;
-    }
-    public boolean isFull(){
-        return top==length;
-    }
-    public T top(){
-        if (isEmpty())
-            return null;
-        else {
-            return pila[top-1];
-        }
-    }
-    public void verStack() {
-        for (int i = top - 1; i >= 0; i--) {
-            System.out.println(pila[i]);
-        }
     }
 }
