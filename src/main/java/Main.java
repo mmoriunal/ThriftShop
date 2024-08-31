@@ -1,28 +1,27 @@
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Deseas entrar al carrito de compras? (S/N)");
-        String respuesta = sc.nextLine();
-        if (respuesta.equalsIgnoreCase("S")) {
-            Main main = new Main();
-            main.carritoDeCompras(sc);
+        FiltradoPrecioService filtrado = new FiltradoPrecioService();
+
+        ArrayList <Prenda> prendas= new ArrayList<Prenda>();
+        for(int i = 0; i<1000000; i++){
+            Prenda p = generarPrendaAleatoria();
+            prendas.add(p);
         }
-        System.out.println("Deseas entrar al historial de prendas recientes? (S/N)");
-        respuesta = sc.nextLine();
-        if (respuesta.equalsIgnoreCase("S")) {
-            Main main = new Main();
-            main.historialPrendas(sc);
-        }
-        System.out.println("Deseas entrar a la lista de ordenes? (S/N)");
-        respuesta = sc.nextLine();
-        if (respuesta.equalsIgnoreCase("S")) {
-            Main main = new Main();
-            main.listaOrdenes(sc);
-        }
+
+        filtrado.testPerformance(prendas, 0, 50000);
+        filtrado.testPerformance(prendas, 0, 50000 , 10);
+        // Scanner sc = new Scanner(System.in);
+        // System.out.println("Deseas filtrar por precio? (S/N)");
+        // String respuesta = sc.nextLine();
+        // if (respuesta.equalsIgnoreCase("S")) {
+        //     
+        // }
+
     }
   
     public void carritoDeCompras(Scanner sc){
@@ -191,7 +190,7 @@ public class Main {
         String color = colores[random.nextInt(colores.length)];
         char talla = tallas[random.nextInt(tallas.length)];
         int idVendedor = random.nextInt(100000);
-        int precio = random.nextInt(100000) + 20000; // Precio aleatorio entre 500 y 50500
+        int precio = random.nextInt(100001) + 20000; // Precio aleatorio entre 20'000 y 120'000
 
         return new Prenda(nombre, color, talla, idVendedor, precio);
     }
