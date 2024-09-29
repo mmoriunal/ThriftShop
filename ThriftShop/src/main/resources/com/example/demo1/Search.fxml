@@ -28,7 +28,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btnPerfil" contentDisplay="TOP" graphicTextGap="0.0" layoutX="74.0" layoutY="550.0" mnemonicParsing="false" onAction="#HandleVerPerfil" prefHeight="35.0" prefWidth="43.0" style="-fx-background-color: white;" text="Perfil">
+      <Button fx:id="btnPerfil" contentDisplay="TOP" graphicTextGap="0.0" layoutX="74.0" layoutY="550.0" mnemonicParsing="false" onAction="#HandleVerPerfil" prefHeight="35.0" prefWidth="43.0" style="-fx-background-color: 0;" text="Perfil">
          <font>
             <Font size="12.0" />
          </font>

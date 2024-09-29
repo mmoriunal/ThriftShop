@@ -1,38 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="overallPane" prefHeight="600.0" prefWidth="401.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.LoginController">
+<AnchorPane fx:id="overallPane" prefHeight="600.0" prefWidth="401.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.RegisterController">
     <children>
         <ImageView fx:id="Backimg" fitHeight="600.0" fitWidth="434.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true" styleClass="body" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <image>
                 <Image url="@imagesin/BackIncio.png" />
             </image>
         </ImageView>
+        <Label text="Registrar Usuario" layoutX="140.0" layoutY="70.0" />
         
         <Label text="Usuario:" layoutX="50.0" layoutY="100.0" />
-        <TextField fx:id="usernameField" layoutX="50.0" layoutY="130.0" prefHeight="29.0" prefWidth="285.0" promptText="Ingrese su nombre de usuario" />
+        <TextField fx:id="newUsernameField" layoutX="50.0" layoutY="130.0" prefHeight="29.0" prefWidth="285.0" promptText="Ingrese un nombre de usuario" />
         
         <Label text="Contraseña:" layoutX="50.0" layoutY="170.0" />
-        <PasswordField fx:id="passwordField" layoutX="50.0" layoutY="200.0" prefHeight="29.0" prefWidth="285.0" promptText="Ingrese su contraseña" />
+        <PasswordField fx:id="newPasswordField" layoutX="50.0" layoutY="200.0" prefHeight="29.0" prefWidth="285.0" promptText="Ingrese una contraseña" />
         
-        <Button text="Iniciar Sesión" layoutX="150.0" layoutY="250.0" onAction="#handleLogin" style="-fx-background-color: EEDC93;" />
-        
-        <Label layoutX="50.0" layoutY="400.0" text="¿No tienes cuenta?" />
-        <Button text="Crear Usuario" layoutX="150.0" layoutY="420.0" onAction="#handleCreateUser" style="-fx-background-color: EEDC93;" />
-
+        <Button text="Registrar" layoutX="150.0" layoutY="250.0" onAction="#handleRegister" style="-fx-background-color: EEDC93;" />
         
         <ImageView fx:id="CloseB" fitHeight="31.0" fitWidth="29.0" layoutX="362.0" layoutY="13.0" onMouseClicked="#closeWindow" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@imagesin/x-close-icon-512x509-8xgordid.png" />
             </image>
+        </ImageView>
+        <ImageView fx:id="Volver" onMouseClicked="#handleBack" fitHeight="31.0" fitWidth="29.0" layoutX="23.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagesin/back.png" />
+               </image>
         </ImageView>
     </children>
 </AnchorPane>

@@ -42,7 +42,7 @@ public class Search extends prendaprevController{
 
     @FXML
     private Button btnPerfil;
-    private Usuario usuarioLogueado;
+    private static Usuario usuarioLogueado;
 
     @FXML
     private Button verTodo;
@@ -94,6 +94,9 @@ public class Search extends prendaprevController{
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("NewPrenda.fxml")); // Cambia a la ruta correcta
         Parent root = loader.load();
+
+        NewPrenda newPrendaController = loader.getController();
+        newPrendaController.setUsuario(usuarioLogueado);
         Historial.agregar("Search.fxml");
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -173,20 +176,16 @@ public class Search extends prendaprevController{
     @FXML
     private void HandleVerPerfil() {
         try {
-            // Cargar la vista de perfil del usuario
             FXMLLoader loader = new FXMLLoader(getClass().getResource("PerfilDeUsuario.fxml"));
             Parent root = loader.load();
-
-            // Obtener el controlador de la nueva vista
+            Stage stage = (Stage) carrito.getScene().getWindow();
+            
             PerfilDeUsuarioController perfilController = loader.getController();
-
-            // ID y el nombre del usuario
             perfilController.initialize(usuarioLogueado);
-
-            // Mostrar la nueva vista en una nueva ventana
-            Stage stage = new Stage();
+            Historial.agregar("Search.fxml");
+            Scene scene = new Scene(root);
             stage.setTitle("Perfil del Usuario");
-            stage.setScene(new Scene(root));
+            stage.setScene(scene);
             stage.show();
 
         } catch (IOException e) {

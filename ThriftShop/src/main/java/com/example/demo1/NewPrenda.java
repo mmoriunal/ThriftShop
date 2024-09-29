@@ -38,6 +38,8 @@ public class NewPrenda {
     private String[] tallas={"XS","S","M","L","XL","XXL"};
     private String imgpath;
     File selectedFile;
+
+    private static Usuario usuario;
     @FXML
     void initialize() throws IOException {
         ImageShow.setVisible(false);
@@ -63,7 +65,7 @@ public class NewPrenda {
         }
     }
     public void CreateNewPrenda(ActionEvent event) throws IOException{
-        File targetFolder = new File("C:\\demo2\\demo1\\src\\main\\resources\\com\\example\\demo1\\images");
+        File targetFolder = new File("\\demo1\\src\\main\\resources\\com\\example\\demo1\\images");
         File targetFile = new File(targetFolder, selectedFile.getName());
         Files.copy(selectedFile.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
         String nombre = PrendaName.getText();
@@ -72,9 +74,10 @@ public class NewPrenda {
         color = color.substring(0, 1).toUpperCase() + color.substring(1).toLowerCase();
         String talla = (String) PrendaTalla.getValue();
         int precio = Integer.parseInt(PrendaPrecio.getText());
+        int idUsuario = usuario.getIdUsuario();
         String relativePath = "images/" + selectedFile.getName();
-        Prenda p = new Prenda(HelloApplication.getListaDePrendas().size()+1,nombre,color,talla,53548,precio,relativePath);
-        String newLineContent = HelloApplication.getListaDePrendas().size()+1 + "," + nombre + "," + color + "," + talla + "," + "53548" + "," + precio + "," + relativePath;
+        Prenda p = new Prenda(HelloApplication.getListaDePrendas().size()+1,nombre,color,talla,idUsuario,precio,relativePath);
+        String newLineContent = HelloApplication.getListaDePrendas().size()+1 + "," + nombre + "," + color + "," + talla + "," + idUsuario + "," + precio + "," + relativePath;
         System.out.println(newLineContent);
         try  {
             BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\demo2\\demo1\\src\\main\\resources\\prendas.txt",true));
@@ -112,5 +115,9 @@ public class NewPrenda {
         } else {
             System.out.println("No hay páginas anteriores en el historial.");
         }
+    }
+
+    public void setUsuario(Usuario usuario){
+        this.usuario = usuario;
     }
 }

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,6 +24,9 @@ import java.util.List;
 
 public class LoginController {
     @FXML
+    private ImageView CloseB;
+
+    @FXML
     private TextField usernameField;
 
     @FXML
@@ -37,10 +41,11 @@ public class LoginController {
     private Usuario usuarioLogueado;
 
     private static final String FILE_NAME = "ThriftShop\\src\\main\\resources\\usuarios.txt";
-    private static int idCounter = 1;
-    private static HashMapUsuario usuarios = new HashMapUsuario();
+    static int idCounter = 1;
+    static HashMapUsuario usuarios = new HashMapUsuario();
 
     private static List<Prenda> listaDePrendas;
+    private static List<Usuario> listaDeUsuarios;
 
     public LoginController() {
         cargarUsuariosDesdeArchivo();
@@ -66,35 +71,58 @@ public class LoginController {
             showAlert("Error de inicio de sesión", "Nombre de usuario o contraseña incorrectos.");
         }
     }
-
     @FXML
     public void handleCreateUser() {
-        String nombre = newUsernameField.getText();
-        String password = newPasswordField.getText();
-
-        // Validar que los campos no estén vacíos
-        if (nombre.isEmpty() || password.isEmpty()) {
-            showAlert("Error", "Los campos de nombre de usuario y contraseña no pueden estar vacíos.");
-            return;
+        try {
+            // Cargar el nuevo FXML de registro
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("register.fxml"));
+            Parent registerView = loader.load();
+            
+            // Cambiar la escena a la vista de registro
+            Historial.agregar("Login.fxml");
+            Scene scene = new Scene(registerView);
+            Stage stage = (Stage) CloseB.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        // Verificar si el usuario ya existe
-        if (usuarios.containsKey(nombre)) {
-            showAlert("Error", "El nombre de usuario ya está en uso. Por favor elige otro.");
-            return;
-        }
-
-        Usuario nuevoUsuario = new Usuario(idCounter++, nombre, password);
-        usuarios.put(nombre, nuevoUsuario);
-        guardarUsuarioEnArchivo(nuevoUsuario);
-        System.out.println("Usuario creado exitosamente. ID de usuario: " + nuevoUsuario.getIdUsuario());
     }
 
-    private static void guardarUsuarioEnArchivo(Usuario usuario) {
-        try (FileWriter fw = new FileWriter(FILE_NAME, true); 
-             BufferedWriter bw = new BufferedWriter(fw);
-             PrintWriter out = new PrintWriter(bw)) {
-            out.println(usuario.toFileString());
+    @FXML
+    public void closeWindow() {
+
+        Stage stage = (Stage) CloseB.getScene().getWindow();
+        stage.close();
+    }
+
+    public static void guardarUsuarioEnArchivo(Usuario usuario) {
+        // Cargar todos los usuarios
+        List<Usuario> allUsers = usuarios.getValues();
+
+        // Buscar si el usuario ya existe
+        boolean userExists = false;
+        for (Usuario existingUser : allUsers) {
+            if (existingUser.getIdUsuario() == usuario.getIdUsuario()) {
+                userExists = true;
+                break;
+            }
+        }
+
+        // Escribir en el archivo
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
+            for (Usuario existingUser : allUsers) {
+                if (existingUser.getIdUsuario() == usuario.getIdUsuario()) {
+                    writer.write(usuario.toFileString()); // Reemplazar la entrada del usuario
+                } else {
+                    writer.write(existingUser.toFileString()); // Mantener la entrada original
+                }
+                writer.newLine();
+            }
+            if (!userExists) {
+                writer.write(usuario.toFileString()); // Si el usuario no existía, agregarlo al final
+                writer.newLine();
+            }
         } catch (IOException e) {
             System.out.println("Error al guardar el usuario: " + e.getMessage());
         }
@@ -115,6 +143,8 @@ public class LoginController {
 
         listaDePrendas = getPrendas();
         Scene scene = new Scene(root);
+        
+        stage.setTitle("ThriftShop");
         stage.setScene(scene);
         stage.show();
     }
@@ -148,13 +178,27 @@ public class LoginController {
                     int id = Integer.parseInt(parts[0]);
                     String nombre = parts[1];
                     String hashedPassword = parts[2];
-                    Usuario usuario = new Usuario(id, nombre, hashedPassword, true);
+                    Usuario usuario = new Usuario(id, nombre, hashedPassword, null, true);
+                    usuarios.put(nombre, usuario);
+                    idCounter = Math.max(idCounter, id + 1); // Para evitar repetir IDs
+                }
+                if (parts.length == 4) {
+                    int id = Integer.parseInt(parts[0]);
+                    String nombre = parts[1];
+                    String hashedPassword = parts[2];
+                    String profileImagePath = parts[3];
+                    Usuario usuario = new Usuario(id, nombre, hashedPassword, profileImagePath, true);
                     usuarios.put(nombre, usuario);
                     idCounter = Math.max(idCounter, id + 1); // Para evitar repetir IDs
                 }
             }
         } catch (IOException e) {
             System.out.println("No se pudo cargar el archivo: " + e.getMessage());
+        }
+    
+        // Print loaded users for debugging
+        for (Usuario n : usuarios.getValues()) {
+            System.out.println(n.toFileString());
         }
     }
 

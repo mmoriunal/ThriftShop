@@ -1,5 +1,7 @@
 package com.example.demo1;
 
+import java.util.*;
+
 class HashMapUsuario {
     private static final int INITIAL_CAPACITY = 16;
     private Node[] table;
@@ -61,5 +63,17 @@ class HashMapUsuario {
 
     public boolean containsKey(String key) {
         return get(key) != null;
+    }
+
+    public List<Usuario> getValues() {
+        List<Usuario> values = new ArrayList<>();
+        for (Node node : table) {
+            Node current = node;
+            while (current != null) {
+                values.add(current.value);
+                current = current.next;
+            }
+        }
+        return values;
     }
 }

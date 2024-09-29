@@ -20,7 +20,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        //stage.initStyle(javafx.stage.StageStyle.UNDECORATED);
+        stage.initStyle(javafx.stage.StageStyle.UNDECORATED);
         stage.setTitle("ThriftStop - Login");
         stage.setScene(scene);
         stage.show();
@@ -32,6 +32,7 @@ public class HelloApplication extends Application {
     }
 
     public static List<Prenda> getListaDePrendas(){
+        listaDePrendas = prendaService.getPrendas();
         return listaDePrendas;
     }
 

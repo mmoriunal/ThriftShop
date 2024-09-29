@@ -20,7 +20,7 @@
                   <Image url="@imagesin/Thrift_Logo-removebg.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="CloseB" fitHeight="25.0" fitWidth="25.0" layoutX="365.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="CloseB" fitHeight="25.0" fitWidth="25.0" layoutX="365.0" layoutY="14.0" onMouseClicked="#handleSalir" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imagesin/x-close-icon-512x509-8xgordid.png" />
                </image>
@@ -32,9 +32,14 @@
             </ImageView>
          </children>
       </Pane>
-      <VBox spacing="20" alignment="CENTER" layoutX="50" layoutY="50">
-            <Label fx:id="lblUsuario" style="-fx-font-size: 24;" text="Usuario:"/>
-            <Label fx:id="lblIdUsuario" style="-fx-font-size: 18;" text="ID de Usuario:"/>
-        </VBox>
+
+      <VBox spacing="20" alignment="CENTER" layoutX="50.0" layoutY="120.0" prefWidth="300.0">
+         <Label fx:id="lblUsuario" style="-fx-font-size: 24;" text="Usuario:"/>
+         <Label fx:id="lblIdUsuario" style="-fx-font-size: 18;" text="ID de Usuario:"/>
+         
+         <ImageView fx:id="UserImg" fitHeight="150" fitWidth="150" preserveRatio="true"/>
+         
+         <Button text="Subir Foto" onAction="#handleUploadPicture" style="-fx-background-color: #d5bd72; -fx-text-fill: white;" />
+      </VBox>
    </children>
 </AnchorPane>
