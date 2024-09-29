@@ -65,7 +65,7 @@ public class NewPrenda {
         }
     }
     public void CreateNewPrenda(ActionEvent event) throws IOException{
-        File targetFolder = new File("\\demo1\\src\\main\\resources\\com\\example\\demo1\\images");
+        File targetFolder = new File("ThriftShop\\src\\main\\resources\\com\\example\\demo1\\images");
         File targetFile = new File(targetFolder, selectedFile.getName());
         Files.copy(selectedFile.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
         String nombre = PrendaName.getText();
@@ -80,7 +80,7 @@ public class NewPrenda {
         String newLineContent = HelloApplication.getListaDePrendas().size()+1 + "," + nombre + "," + color + "," + talla + "," + idUsuario + "," + precio + "," + relativePath;
         System.out.println(newLineContent);
         try  {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\demo2\\demo1\\src\\main\\resources\\prendas.txt",true));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("ThriftShop\\src\\main\\resources\\prendas.txt",true));
             writer.write("\n"+newLineContent);  // Write your content
             writer.close();
         } catch (IOException e) {

@@ -213,7 +213,7 @@ public class Search extends prendaprevController {
                     prendaViewController controller = loader.getController();
                     controller.setData(prenda);
 
-                    Stage stage = new Stage();
+                    Stage stage = (Stage) carrito.getScene().getWindow();
                     stage.setScene(new Scene(root));
                     stage.show();
                 } catch (IOException e) {
