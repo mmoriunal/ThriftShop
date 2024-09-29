@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="overallPane" prefHeight="600.0" prefWidth="401.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Search">
+   <children>
+      <ImageView fx:id="Backimg" fitHeight="600.0" fitWidth="422.0" layoutX="-1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" styleClass="body" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-20.0" AnchorPane.topAnchor="1.0">
+         <image>
+            <Image url="@imagesin/BackIncio.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="26.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recomendados para ti...">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="35.0" layoutX="36.0" layoutY="85.0" stroke="BLACK" strokeType="INSIDE" width="285.0" />
+      <TextField fx:id="Query" layoutX="38.0" layoutY="87.0" prefHeight="29.0" prefWidth="281.0" promptText="Ingrese su búsqueda" />
+      <AnchorPane fx:id="recomendacionesPane" layoutX="11.0" layoutY="346.0" prefHeight="195.0" prefWidth="371.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <ScrollPane fx:id="recomendacionesScrollPane" hbarPolicy="AS_NEEDED" layoutX="12.0" layoutY="10.0" prefHeight="185.0" prefWidth="356.0" style="-fx-background-color: #ffffff;">
+               <content>
+                  <HBox fx:id="recomendacionesHBox" alignment="CENTER" spacing="10.0" style="-fx-background-color: #ffffff;">
+                     <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="176.0" prefWidth="135.0" spacing="5" style="-fx-border-color: #D5BD72; -fx-background-color: #f9f9f9; -fx-padding: 10;">
+                     </VBox>
+                  </HBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <Button fx:id="SearchButton" layoutX="321.0" layoutY="80.0" mnemonicParsing="false" onAction="#SearchB" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: EEDC93;" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="25.0">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagesin/search.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button contentDisplay="TOP" graphicTextGap="0.0" layoutX="74.0" layoutY="551.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="43.0" style="-fx-background-color: E9D57F;" text="Perfil">
+         <font>
+            <Font size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagesin/user.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="NewP" contentDisplay="TOP" graphicTextGap="0.0" layoutX="153.0" layoutY="550.0" mnemonicParsing="false" onAction="#NuevaPrenda" prefHeight="41.0" prefWidth="95.0" style="-fx-background-color: E9D57F;" text="Nueva Prenda">
+         <font>
+            <Font size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagesin/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button contentDisplay="TOP" graphicTextGap="0.0" layoutX="264.0" layoutY="549.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="95.0" style="-fx-background-color: E9D57F;" text="Home">
+         <font>
+            <Font size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagesin/home.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fx:id="CloseB" fitHeight="31.0" fitWidth="29.0" layoutX="362.0" layoutY="13.0" onMouseClicked="#closeWindow" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagesin/x-close-icon-512x509-8xgordid.png" />
+         </image>
+      </ImageView>
+      <Button contentDisplay="TOP" graphicTextGap="0.0" layoutX="257.0" layoutY="1.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="95.0" style="-fx-background-color: white;" text="Shopping bag" visible="false">
+         <font>
+            <Font name="Nirmala UI Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagesin/shopping-bag.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fx:id="menu" fitHeight="35.0" fitWidth="43.0" layoutX="3.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagesin/Hamburger_icon.svg.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="menuBack" fitHeight="35.0" fitWidth="43.0" layoutX="3.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagesin/Hamburger_icon.svg.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="slider" layoutY="58.0" prefHeight="541.0" prefWidth="161.0" style="-fx-background-color: EEDC93; -fx-border-color: D5BD72;">
+         <children>
+            <VBox layoutX="14.0" layoutY="9.0" prefHeight="487.0" prefWidth="170.0" style="-fx-background-color: EEDC93;" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="9.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="203.0" style="-fx-background-color: D5BD72;" text="Pagina principal" textAlignment="CENTER" textFill="#73642a" textOverrun="WORD_ELLIPSIS">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="verTodo" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#mostrarVerTodo" prefHeight="31.0" prefWidth="203.0" style="-fx-background-color: D5BD72;" text="Ver todo" textAlignment="CENTER" textFill="#73642a" textOverrun="WORD_ELLIPSIS">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="categorias" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#mostrarCategorias" prefHeight="31.0" prefWidth="203.0" style="-fx-background-color: D5BD72;" text="Categorias" textFill="#73642a" textOverrun="WORD_ELLIPSIS">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="carrito" layoutX="271.0" layoutY="14.0" onMouseClicked="#mostrarCarrito" prefHeight="31.0" prefWidth="49.0">
+         <children>
+            <ImageView fitHeight="28.0" fitWidth="23.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagesin/carrito.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="carritoNum" layoutX="26.0" prefHeight="28.0" prefWidth="33.0" text="(0)">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+
+   </children>
+</AnchorPane>
