@@ -28,8 +28,12 @@ public class HelloApplication extends Application {
 
     public static List<Prenda> getPrendas(){
         List<Prenda> listaDePrendas = new ArrayList<>();
-        try (InputStream inputStream = HelloApplication.class.getClassLoader().getResourceAsStream("prendas.txt");
-             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+        try (InputStream inputStream = HelloApplication.class.getClassLoader().getResourceAsStream("prendas.txt")){
+            if (inputStream == null) {
+                throw new IOException("Archivo 'prendas.txt' no encontrado.");
+            }
+        
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream)); 
             String line;
             while ((line = reader.readLine()) != null) {
                 Prenda pr = Prenda.fromString(line);
