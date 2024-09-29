@@ -32,7 +32,7 @@ public class AVL {
 
         if (prenda.precio < node.prenda.precio)
             node.left = insertRec(node.left, prenda);
-        else if (prenda.precio > node.prenda.precio)
+        else if (prenda.precio >= node.prenda.precio)
             node.right = insertRec(node.right, prenda);
         else
             return node;
