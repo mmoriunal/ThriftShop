@@ -1,0 +1,6 @@
+.body{
+      -fx-background-image: url("@Back%20pag%20inicio.png");
+      -fx-background-size: contain;
+      -fx-background-position: center;
+      -fx-background-repeat: no-repeat;
+}

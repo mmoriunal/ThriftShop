@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.prendaViewController">
+   <children>
+      <StackPane layoutX="28.0" layoutY="119.0" prefHeight="150.0" prefWidth="187.0">
+         <children>
+            <ImageView fx:id="image" fitHeight="224.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/21.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
+      <Label fx:id="nombreLabel" layoutX="37.0" layoutY="75.0" text="NOMBRE">
+         <font>
+            <Font name="Book Antiqua" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="priceLabel" layoutX="37.0" layoutY="364.0" prefHeight="36.0" prefWidth="179.0" text="Precio">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="sizeLabel" layoutX="37.0" layoutY="400.0" prefHeight="21.0" prefWidth="161.0" text="Talla:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="sellerLabel" layoutX="37.0" layoutY="421.0" prefHeight="21.0" prefWidth="158.0" text="Vendedor: ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="carritoLabel" layoutX="98.0" layoutY="466.0" prefHeight="21.0" prefWidth="272.0" text="Añadido al carrito" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <AnchorPane prefHeight="31.0" prefWidth="400.0" style="-fx-background-color: white;">
+         <children>
+            <Pane layoutX="137.0" layoutY="28.0" prefHeight="57.0" prefWidth="400.0" style="-fx-background-color: #e9d57f; -fx-border-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fx:id="close" fitHeight="30.0" fitWidth="30.0" layoutX="356.0" layoutY="10.0" onMouseClicked="#closeWindow" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../demo1/src/main/resources/com/example/demo1/imagesin/x-close-icon-512x509-8xgordid.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="back" fitHeight="36.0" fitWidth="40.0" layoutX="14.0" layoutY="10.0" onMouseClicked="#handleBackClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../demo1/src/main/resources/com/example/demo1/imagesin/back.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="57.0" fitWidth="116.0" layoutX="50.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../demo1/src/main/resources/com/example/demo1/Thrift_Logo-removebg.png" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane fx:id="carrito" layoutX="267.0" layoutY="9.0" onMouseClicked="#mostrarCarrito" prefHeight="49.0" prefWidth="80.0">
+                     <children>
+                        <ImageView fitHeight="36.0" fitWidth="33.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagesin/carrito.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="carritoNum" layoutX="40.0" layoutY="4.0" prefHeight="28.0" prefWidth="33.0" text="(0)">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e9d57f" height="63.0" layoutX="32.0" layoutY="473.0" stroke="BLACK" strokeType="INSIDE" width="71.0" />
+      <ImageView fx:id="carritoImage" fitHeight="49.0" fitWidth="63.0" layoutX="37.0" layoutY="480.0" onMouseClicked="#handleAddToCart" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagesin/carrito.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
