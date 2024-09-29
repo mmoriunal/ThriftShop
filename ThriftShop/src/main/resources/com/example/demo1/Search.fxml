@@ -28,15 +28,16 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button contentDisplay="TOP" graphicTextGap="0.0" layoutX="74.0" layoutY="550.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="43.0" style="-fx-background-color: 0;" text="Perfil">
+      <Button fx:id="btnPerfil" contentDisplay="TOP" graphicTextGap="0.0" layoutX="74.0" layoutY="550.0" mnemonicParsing="false" onAction="#HandleVerPerfil" prefHeight="35.0" prefWidth="43.0" style="-fx-background-color: white;" text="Perfil">
          <font>
             <Font size="12.0" />
          </font>
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@imagesin/user.png" />
-               </image></ImageView>
+                  <image>
+                     <Image url="@imagesin/user.png" />
+                  </image>
+            </ImageView>
          </graphic>
       </Button>
       <Button fx:id="NewP" contentDisplay="TOP" graphicTextGap="0.0" layoutX="153.0" layoutY="547.0" mnemonicParsing="false" onAction="#NuevaPrenda" prefHeight="41.0" prefWidth="95.0" style="-fx-background-color: 0;" text="Nueva Prenda">

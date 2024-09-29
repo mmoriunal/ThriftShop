@@ -106,6 +106,9 @@ public class LoginController {
         // Cargar la escena de búsqueda
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Search.fxml"));
         Parent root = fxmlLoader.load();
+
+        Search searchController = fxmlLoader.getController();
+        searchController.setUsuarioLogueado(usuarioLogueado);
         
         // Obtener la ventana actual y cambiar la escena
         Stage stage = (Stage) usernameField.getScene().getWindow();

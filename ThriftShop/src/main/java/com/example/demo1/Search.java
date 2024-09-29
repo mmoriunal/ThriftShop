@@ -41,6 +41,10 @@ public class Search extends prendaprevController{
     private Label carritoNum;
 
     @FXML
+    private Button btnPerfil;
+    private Usuario usuarioLogueado;
+
+    @FXML
     private Button verTodo;
     String query;
     static List<Prenda> resultados;
@@ -164,5 +168,33 @@ public class Search extends prendaprevController{
             menu.setVisible(true);
             menuBack.setVisible(false);
         });
+    }
+
+    @FXML
+    private void HandleVerPerfil() {
+        try {
+            // Cargar la vista de perfil del usuario
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("PerfilDeUsuario.fxml"));
+            Parent root = loader.load();
+
+            // Obtener el controlador de la nueva vista
+            PerfilDeUsuarioController perfilController = loader.getController();
+
+            // ID y el nombre del usuario
+            perfilController.initialize(usuarioLogueado);
+
+            // Mostrar la nueva vista en una nueva ventana
+            Stage stage = new Stage();
+            stage.setTitle("Perfil del Usuario");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setUsuarioLogueado(Usuario usuario) {
+        this.usuarioLogueado = usuario;
     }
 }
