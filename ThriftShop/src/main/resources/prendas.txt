@@ -48,4 +48,3 @@
 48,Blusa,Rojo,M,68926,53700,images/48.jpg
 49,Zapatos,Azul,M,21289,29100,images/49.jpg
 50,Falda,Morado,L,67693,71200,images/50.jpg
-51,Falda,Rojo,M,1,50000,images/3.jpg
