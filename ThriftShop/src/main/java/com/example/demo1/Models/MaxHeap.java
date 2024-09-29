@@ -1,6 +1,6 @@
-package com.example.demo1.Models;
+package com.example.demo1.models;
 
-class MaxHeap extends MinHeap {
+public class MaxHeap extends MinHeap {
     public MaxHeap() {
         super();
     }

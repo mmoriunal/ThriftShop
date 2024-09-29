@@ -1,4 +1,4 @@
-package com.example.demo1.Services;
+package com.example.demo1.services;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -21,12 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.demo1.HelloApplication;
-import com.example.demo1.Controllers.prendaprevController;
-import com.example.demo1.Models.Carrito;
-import com.example.demo1.Models.Historial;
-import com.example.demo1.Models.Prenda;
+import com.example.demo1.controllers.PrendaPrevController;
+import com.example.demo1.models.Carrito;
+import com.example.demo1.models.Historial;
+import com.example.demo1.models.Prenda;
 
-public class Search extends prendaprevController{
+public class Search extends PrendaPrevController{
     @FXML
     private TextField Query;
     @FXML

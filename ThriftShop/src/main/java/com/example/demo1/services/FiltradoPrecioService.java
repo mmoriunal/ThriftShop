@@ -1,10 +1,10 @@
-package com.example.demo1.Services;
+package com.example.demo1.services;
 
 import java.util.List;
 
-import com.example.demo1.Models.AVL;
-import com.example.demo1.Models.BST;
-import com.example.demo1.Models.Prenda;
+import com.example.demo1.models.AVL;
+import com.example.demo1.models.BST;
+import com.example.demo1.models.Prenda;
 
 public class FiltradoPrecioService {
     private BST bst;

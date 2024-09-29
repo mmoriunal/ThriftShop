@@ -1,4 +1,4 @@
-package com.example.demo1.Controllers;
+package com.example.demo1.controllers;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -19,12 +19,12 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.LinkedList;
 
-import com.example.demo1.Models.Carrito;
-import com.example.demo1.Models.Historial;
-import com.example.demo1.Models.Prenda;
+import com.example.demo1.models.Carrito;
+import com.example.demo1.models.Historial;
+import com.example.demo1.models.Prenda;
 
 
-public class carritoController {
+public class CarritoController {
     @FXML
     private ImageView close;
     @FXML
@@ -137,9 +137,9 @@ public class carritoController {
             fxmlLoader.setLocation(getClass().getResource("prendaprevCarrito.fxml"));
             try {
                 AnchorPane anchorPane = fxmlLoader.load();
-                prendaprevCarritoController prendaprevCarritoController = fxmlLoader.getController();
-                prendaprevCarritoController.setData(prenda);
-                prendaprevCarritoController.setMainController(this);
+                PrendaPrevCarritoController PrendaPrevCarritoController = fxmlLoader.getController();
+                PrendaPrevCarritoController.setData(prenda);
+                PrendaPrevCarritoController.setMainController(this);
                 grid.add(anchorPane, column, row++);
                 GridPane.setMargin(anchorPane, new Insets(10));
                 totalSubtotal += prenda.getPrecio();

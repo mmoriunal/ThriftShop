@@ -1,4 +1,4 @@
-package com.example.demo1.Controllers;
+package com.example.demo1.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,14 +12,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.LinkedList;
 
-import com.example.demo1.Models.Carrito;
-import com.example.demo1.Models.Historial;
-import com.example.demo1.Models.Prenda;
-import com.example.demo1.Services.HistorialEntry;
+import com.example.demo1.services.HistorialEntry;
+import com.example.demo1.models.Carrito;
+import com.example.demo1.models.Historial;
+import com.example.demo1.models.Prenda;
 
-public class prendaViewController {
+public class PrendaViewController {
     @FXML
     private ImageView close;
 
@@ -106,10 +105,10 @@ public class prendaViewController {
     }
     @FXML
     private void handleAddToCart() {
-        Carrito carrito = Carrito.getInstancia();
+        
         if (prendaActual != null) {
-            if (!carrito.contienePrenda(prendaActual)) {
-                carrito.agregarPrenda(prendaActual);
+            if (!Carrito.contienePrenda(prendaActual)) {
+                Carrito.agregarPrenda(prendaActual);
                 carritoLabel.setVisible(true);
                 carritoLabel.setText("Prenda añadida al carrito: " + prendaActual.getNombre());
                 //NEW NEWNEWNEWNEWNEWNEWNWENENWNENWENWNENW

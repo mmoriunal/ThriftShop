@@ -1,4 +1,4 @@
-package com.example.demo1.Controllers;
+package com.example.demo1.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,10 +12,10 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
-import com.example.demo1.Models.Historial;
-import com.example.demo1.Models.Prenda;
+import com.example.demo1.models.Historial;
+import com.example.demo1.models.Prenda;
 
-public class prendaprevController {
+public class PrendaPrevController {
 
     @FXML
     private Label nameLabel;
@@ -51,7 +51,7 @@ public class prendaprevController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("prendaview.fxml")); // Cambia a la ruta correcta
             Parent root = loader.load();
             Historial.agregar(origen + ".fxml");
-            prendaViewController controller = loader.getController();
+            PrendaViewController controller = loader.getController();
             controller.setData(prenda);
 
             Stage stage = (Stage) verLabel.getScene().getWindow();

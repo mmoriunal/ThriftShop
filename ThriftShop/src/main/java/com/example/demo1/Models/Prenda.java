@@ -1,8 +1,11 @@
-package com.example.demo1.Models;
+package com.example.demo1.models;
 
-class Prenda implements Comparable<Prenda> {
-    String nombre, color, fotoPath, talla;
-    int id_vendedor, precio, id;
+public class Prenda implements Comparable<Prenda> {
+    public String nombre;
+    public String color;
+    public String fotoPath;
+    public String talla;
+    public int id_vendedor, precio, id;
 
     public Prenda(){
         this.id = 0;

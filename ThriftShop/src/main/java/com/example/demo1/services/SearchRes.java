@@ -1,4 +1,4 @@
-package com.example.demo1.Services;
+package com.example.demo1.services;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,14 +18,13 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.EventListener;
 import java.util.List;
 
-import com.example.demo1.Controllers.prendaprevController;
-import com.example.demo1.Models.Historial;
-import com.example.demo1.Models.MaxHeap;
-import com.example.demo1.Models.MinHeap;
-import com.example.demo1.Models.Prenda;
+import com.example.demo1.controllers.PrendaPrevController;
+import com.example.demo1.models.Historial;
+import com.example.demo1.models.MaxHeap;
+import com.example.demo1.models.MinHeap;
+import com.example.demo1.models.Prenda;
 
 public class SearchRes {
 
@@ -67,8 +66,8 @@ public class SearchRes {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("prendaprev.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
-                prendaprevController prendaprevController = fxmlLoader.getController();
-                prendaprevController.setData(Search.resultados.get(i),"SearchRes");
+                PrendaPrevController prendaPrevController = fxmlLoader.getController();
+                prendaPrevController.setData(Search.resultados.get(i),"SearchRes");
                 Resgrid.add(anchorPane,column, row++);
                 GridPane.setMargin(anchorPane, new Insets(Search.resultados.size()));
             }}
@@ -86,8 +85,8 @@ public class SearchRes {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("prendaprev.fxml"));
             AnchorPane anchorPane = fxmlLoader.load();
-            prendaprevController prendaprevController = fxmlLoader.getController();
-            prendaprevController.setData(heap.extractMin(),"SearchRes");
+            PrendaPrevController prendaPrevController = fxmlLoader.getController();
+            prendaPrevController.setData(heap.extractMin(),"SearchRes");
             Resgrid.add(anchorPane,column, row++);
             GridPane.setMargin(anchorPane, new Insets(Search.resultados.size()));
         }
@@ -104,8 +103,8 @@ public class SearchRes {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("prendaprev.fxml"));
             AnchorPane anchorPane = fxmlLoader.load();
-            prendaprevController prendaprevController = fxmlLoader.getController();
-            prendaprevController.setData(heapmax.extractMax(),"SearchRes");
+            PrendaPrevController prendaPrevController = fxmlLoader.getController();
+            prendaPrevController.setData(heapmax.extractMax(),"SearchRes");
             Resgrid.add(anchorPane,column, row++);
             GridPane.setMargin(anchorPane, new Insets(Search.resultados.size()));
         }}
@@ -132,8 +131,8 @@ public class SearchRes {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("prendaprev.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
-                prendaprevController prendaprevController = fxmlLoader.getController();
-                prendaprevController.setData(filtres.get(i),"SearchRes");
+                PrendaPrevController prendaPrevController = fxmlLoader.getController();
+                prendaPrevController.setData(filtres.get(i),"SearchRes");
                 Resgrid.add(anchorPane, column, row++);
                 GridPane.setMargin(anchorPane, new Insets(Search.resultados.size()));
             }

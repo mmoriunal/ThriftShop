@@ -1,12 +1,10 @@
-package com.example.demo1.Controllers;
+package com.example.demo1.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
@@ -17,20 +15,14 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.animation.TranslateTransition;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.*;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.example.demo1.HelloApplication;
-import com.example.demo1.Models.Carrito;
-import com.example.demo1.Models.Historial;
-import com.example.demo1.Models.Prenda;
+import com.example.demo1.models.Carrito;
+import com.example.demo1.models.Historial;
+import com.example.demo1.models.Prenda;
 
-public class verTodoController {
+public class VerTodoController {
     @FXML
     private ImageView close;
     @FXML
@@ -49,8 +41,6 @@ public class verTodoController {
     private AnchorPane carrito;
     @FXML
     private ImageView image;
-
-    private List<Prenda> prendas = new ArrayList<>();
     @FXML
     private void initialize() throws IOException {
         menu.setVisible(true);
@@ -72,8 +62,8 @@ public class verTodoController {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource(link));
             AnchorPane anchorPane = fxmlLoader.load();
-            prendaprevController prendaprevController = fxmlLoader.getController();
-            prendaprevController.setData(prendas.get(i),"verTodo");
+            PrendaPrevController prendaPrevController = fxmlLoader.getController();
+            prendaPrevController.setData(prendas.get(i),"verTodo");
             grid.add(anchorPane,column, row++);
             GridPane.setMargin(anchorPane, new Insets(10));
         }

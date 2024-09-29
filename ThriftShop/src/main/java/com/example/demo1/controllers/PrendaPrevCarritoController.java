@@ -1,8 +1,8 @@
-package com.example.demo1.Controllers;
+package com.example.demo1.controllers;
 
-import com.example.demo1.Models.Carrito;
-import com.example.demo1.Models.Historial;
-import com.example.demo1.Models.Prenda;
+import com.example.demo1.models.Carrito;
+import com.example.demo1.models.Historial;
+import com.example.demo1.models.Prenda;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 
-public class prendaprevCarritoController extends prendaprevController{
+public class PrendaPrevCarritoController extends PrendaPrevController{
     @FXML
     private Label nameLabel;
 
@@ -24,9 +24,9 @@ public class prendaprevCarritoController extends prendaprevController{
     private ImageView image;
 
     private Prenda prenda;
-    private carritoController mainController;
+    private CarritoController mainController;
 
-    public void setMainController(carritoController controller) {
+    public void setMainController(CarritoController controller) {
         this.mainController = controller;
     }
 

@@ -1,4 +1,4 @@
-package com.example.demo1.Controllers;
+package com.example.demo1.controllers;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -22,11 +22,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.example.demo1.HelloApplication;
-import com.example.demo1.Models.Carrito;
-import com.example.demo1.Models.Historial;
-import com.example.demo1.Models.Prenda;
+import com.example.demo1.models.Carrito;
+import com.example.demo1.models.Historial;
+import com.example.demo1.models.Prenda;
 
-public class categoriasController {
+public class CategoriasController {
 
     @FXML
     private ImageView close;
@@ -225,8 +225,8 @@ public class categoriasController {
             fxmlLoader.setLocation(getClass().getResource("prendaprev.fxml"));
             AnchorPane anchorPane = fxmlLoader.load();
 
-            prendaprevController prendaprevController = fxmlLoader.getController();
-            prendaprevController.setData(prenda,"categorias"); // Usa el método setData para pasar los datos de la prenda
+            PrendaPrevController prendaPrevController = fxmlLoader.getController();
+            prendaPrevController.setData(prenda,"categorias"); // Usa el método setData para pasar los datos de la prenda
 
             grid.add(anchorPane, column, row++); // Añadir el AnchorPane al grid
         }

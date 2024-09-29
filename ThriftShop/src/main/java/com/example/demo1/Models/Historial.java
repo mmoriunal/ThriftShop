@@ -1,8 +1,8 @@
-package com.example.demo1.Models;
+package com.example.demo1.models;
 
 import java.util.Stack;
 
-import com.example.demo1.Services.HistorialEntry;
+import com.example.demo1.services.HistorialEntry;
 
 public class Historial {
 

@@ -1,4 +1,4 @@
-package com.example.demo1.Services;
+package com.example.demo1.services;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,8 +23,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 
-import com.example.demo1.Models.Historial;
-import com.example.demo1.Models.Prenda;
+import com.example.demo1.HelloApplication;
+import com.example.demo1.models.Historial;
+import com.example.demo1.models.Prenda;
 
 public class NewPrenda {
     @FXML

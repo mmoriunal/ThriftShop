@@ -1,6 +1,6 @@
-package com.example.demo1.Models;
+package com.example.demo1.models;
 
-class MinHeap {
+public class MinHeap {
     Prenda[] heapArray;
     int capacity;
     int current_heap_size;
