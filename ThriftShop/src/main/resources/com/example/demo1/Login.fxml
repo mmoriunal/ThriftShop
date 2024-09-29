@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo1.LoginController">
+    <tabs>
+        <Tab text="Iniciar Sesión">
+            <AnchorPane>
+                <Label text="Usuario:"/>
+                <TextField fx:id="usernameField" layoutX="100" layoutY="20"/>
+                <Label text="Contraseña:" layoutY="60"/>
+                <PasswordField fx:id="passwordField" layoutX="100" layoutY="60"/>
+                <Button text="Iniciar Sesión" layoutX="100" layoutY="100" onAction="#handleLogin"/>
+            </AnchorPane>
+        </Tab>
+        <Tab text="Crear Usuario">
+            <AnchorPane>
+                <Label text="Nombre:"/>
+                <TextField fx:id="newUsernameField" layoutX="100" layoutY="20"/>
+                <Label text="Contraseña:" layoutY="60"/>
+                <PasswordField fx:id="newPasswordField" layoutX="100" layoutY="60"/>
+                <Button text="Crear Usuario" layoutX="100" layoutY="100" onAction="#handleCreateUser"/>
+            </AnchorPane>
+        </Tab>
+    </tabs>
+</TabPane>

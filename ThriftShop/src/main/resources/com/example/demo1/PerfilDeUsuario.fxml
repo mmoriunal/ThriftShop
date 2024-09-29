@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="overallPane" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.UsuarioLogueadoController">
+    <children>
+        <VBox spacing="20" alignment="CENTER" layoutX="50" layoutY="50">
+            <Label fx:id="lblUsuario" font="24" text="Usuario:"/>
+            <Label fx:id="lblIdUsuario" font="18" text="ID de Usuario:"/>
+            
+            <!-- Botón de Menú -->
+            <Button fx:id="btnMenu" text="Menú" onAction="#handleMenu" style="-fx-background-color: #EEDC93; -fx-text-fill: #73642A;">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Button>
+            
+            <!-- Botón de Salir -->
+            <Button fx:id="btnSalir" text="Salir" onAction="#handleSalir" style="-fx-background-color: #EEDC93; -fx-text-fill: #73642A;">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Button>
+        </VBox>
+    </children>
+</AnchorPane>
