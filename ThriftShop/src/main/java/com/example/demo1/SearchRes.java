@@ -35,8 +35,11 @@ public class SearchRes {
     private ImageView CloseB,CloseB1;
     @FXML
     private TextField Min,Max;
+
+    static List<Prenda> resultadosParciales;
     @FXML
     private void initialize() throws IOException{
+        resultadosParciales = Search.resultados;
         PriceRange.setVisible(false);
         printresult();
         CloseB.setOnMouseClicked(event -> closeWindow());
@@ -49,22 +52,22 @@ public class SearchRes {
         stage.close();
     }
     public void printresult() throws IOException {
-        if (Search.resultados.size()==0) {
+        if (resultadosParciales.size()==0) {
           ResNum.setText("Prenda no encontrada");
         } else {
-            int res = Search.resultados.size();
+            int res = resultadosParciales.size();
             ResNum.setText(res + " Resultados encontrados");
             int column = 0;
             int row = 0;
-            for (int i = 0; i < Search.resultados.size();i++){
-                if(Search.resultados.get(i)!=null){
+            for (int i = 0; i < resultadosParciales.size();i++){
+                if(resultadosParciales.get(i)!=null){
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("prendaprev.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
                 prendaprevController prendaprevController = fxmlLoader.getController();
-                prendaprevController.setData(Search.resultados.get(i),"SearchRes");
+                prendaprevController.setData(resultadosParciales.get(i),"SearchRes");
                 Resgrid.add(anchorPane,column, row++);
-                GridPane.setMargin(anchorPane, new Insets(Search.resultados.size()));
+                GridPane.setMargin(anchorPane, new Insets(resultadosParciales.size()));
             }}
         }
     }
@@ -73,8 +76,8 @@ public class SearchRes {
         int column = 0;
         int row = 0;
         MinHeap heap = new MinHeap();
-        for(int i=0;i<Search.resultados.size();i++){
-            heap.insertKey(Search.resultados.get(i));
+        for(int i=0;i<resultadosParciales.size();i++){
+            heap.insertKey(resultadosParciales.get(i));
         }
         while (!heap.isEmpty()) {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -83,7 +86,7 @@ public class SearchRes {
             prendaprevController prendaprevController = fxmlLoader.getController();
             prendaprevController.setData(heap.extractMin(),"SearchRes");
             Resgrid.add(anchorPane,column, row++);
-            GridPane.setMargin(anchorPane, new Insets(Search.resultados.size()));
+            GridPane.setMargin(anchorPane, new Insets(resultadosParciales.size()));
         }
     }
     public void SortMm(ActionEvent event) throws IOException{
@@ -91,8 +94,8 @@ public class SearchRes {
         int column = 0;
         int row = 0;
         MaxHeap heapmax = new MaxHeap();
-        for (int i = 0; i < Search.resultados.size(); i++) {
-            heapmax.insertKey(Search.resultados.get(i));
+        for (int i = 0; i < resultadosParciales.size(); i++) {
+            heapmax.insertKey(resultadosParciales.get(i));
         }
         while (!heapmax.isEmpty()) {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -101,7 +104,7 @@ public class SearchRes {
             prendaprevController prendaprevController = fxmlLoader.getController();
             prendaprevController.setData(heapmax.extractMax(),"SearchRes");
             Resgrid.add(anchorPane,column, row++);
-            GridPane.setMargin(anchorPane, new Insets(Search.resultados.size()));
+            GridPane.setMargin(anchorPane, new Insets(resultadosParciales.size()));
         }}
     public void PriceFilter(ActionEvent event){
         PriceRange.setVisible(true);
@@ -113,7 +116,9 @@ public class SearchRes {
         int min = Integer.parseInt(Min.getText());
         int max = Integer.parseInt(Max.getText());
         filtres = filtrado.filtradoPorPrecioAVL(Search.resultados, min, max);
-        if (Search.resultados.size()==0) {
+        resultadosParciales = filtres;
+        
+        if (resultadosParciales.size()==0) {
             ResNum.setText("No se hay resultados");
         } else {
             int res = filtres.size();
@@ -129,7 +134,7 @@ public class SearchRes {
                 prendaprevController prendaprevController = fxmlLoader.getController();
                 prendaprevController.setData(filtres.get(i),"SearchRes");
                 Resgrid.add(anchorPane, column, row++);
-                GridPane.setMargin(anchorPane, new Insets(Search.resultados.size()));
+                GridPane.setMargin(anchorPane, new Insets(resultadosParciales.size()));
             }
         }
 

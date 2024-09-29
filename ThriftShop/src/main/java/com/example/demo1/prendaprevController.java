@@ -34,9 +34,8 @@ public class prendaprevController {
         this.origen = origen;
         nameLabel.setText(prenda.getNombre() + " " + prenda.getColor());
         priceLabel.setText("$" + prenda.getPrecio());
-        File file = new File("C:\\demo2\\demo1\\src\\main\\resources\\com\\example\\demo1\\" + prenda.getFotoPath());
-        if (file.exists()) {
-            Image imagen = new Image(file.toURI().toString());
+        Image imagen = new Image(getClass().getResourceAsStream(prenda.getFotoPath()));
+        if (!imagen.isError()) {
             image.setImage(imagen);
         } else {
             System.out.println("Image file not found: " + prenda.getFotoPath());
@@ -51,7 +50,7 @@ public class prendaprevController {
             prendaViewController controller = loader.getController();
             controller.setData(prenda);
 
-            Stage stage = (Stage) verLabel.getScene().getWindow();
+            Stage stage = (Stage) image.getScene().getWindow();
             stage.setScene(new Scene(root));
         } catch (Exception e) {
             e.printStackTrace();
